@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ContactsActivity">
 
-
     <item
         android:icon="@android:drawable/ic_input_add"
         android:title="Item"
         app:showAsAction="always"
         android:onClick="onOptionsItemSelected"/>
+
 </menu>

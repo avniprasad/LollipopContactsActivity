@@ -75,6 +75,7 @@ public class ContactsActivity extends AppCompatActivity {
         };
 
 
+
         Snackbar.make(findViewById(R.id.rvContacts), "Added contact", Snackbar.LENGTH_LONG)
                 .setAction("UNDO", myOnClickListener)
                 .show(); // Don’t forget to show!
@@ -87,4 +88,6 @@ public class ContactsActivity extends AppCompatActivity {
 
         return true;
     }
+
+
 }
