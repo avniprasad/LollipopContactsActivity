@@ -1,11 +1,13 @@
 package com.codepath.android.lollipopexercise.activities;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.codepath.android.lollipopexercise.R;
 import com.codepath.android.lollipopexercise.adapters.ContactsAdapter;
@@ -60,7 +62,29 @@ public class ContactsActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        contacts.add(Contact.getRandomContact(this));
+        mAdapter.notifyItemInserted(contacts.size()-1);
 
-        return super.onOptionsItemSelected(item);
+        View.OnClickListener myOnClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Do something here
+                contacts.remove(contacts.size() - 1);
+                mAdapter.notifyItemRemoved(contacts.size());
+            }
+        };
+
+
+        Snackbar.make(findViewById(R.id.rvContacts), "Added contact", Snackbar.LENGTH_LONG)
+                .setAction("UNDO", myOnClickListener)
+                .show(); // Don’t forget to show!
+
+        /**
+        Snackbar.make(this, "Added Contacts", Snackbar.LENGTH_LONG)
+                .setAction("UNDO", new view.OnCl)
+                .show(); // Don’t forget to show!
+         */
+
+        return true;
     }
 }
